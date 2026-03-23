@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
 #include "Contact.hpp"
 
 class	PhoneBook
@@ -15,6 +16,8 @@ class	PhoneBook
 		void set_ix(void);
 		void add(void);
 		void search(void);
+		std::string get_input(std::string msg);
+		int get_input_num(std::string msg);
 };
 
 #endif

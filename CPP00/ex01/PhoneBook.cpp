@@ -6,6 +6,53 @@ void	PhoneBook::set_ix(void)
 	ix = -1;
 }
 
+/*
+* Function to handle all string cases for user input.
+* In case of CTL-D the program ends*/
+std::string PhoneBook::get_input(std::string msg)
+{
+    std::string input;
+
+    while (true)
+    {
+        std::cout << msg;
+		std::getline(std::cin, input);
+		if (std::cin.eof())
+        	exit(0);
+        if (!input.empty())
+        	break ;
+    }
+    return (input);
+}
+
+/*
+* Function to handle all number cases for user input.
+* In case of CTL-D the program ends*/
+int PhoneBook::get_input_num(std::string msg)
+{
+    int num;
+	std::string input;
+
+    while (true)
+    {
+        std::cout << msg;
+		std::getline(std::cin, input);
+		if (!std::atoi(input.c_str()))
+		{
+			std::cout << "Enter a valid number\n";
+			continue ;
+		}
+		if (std::cin.eof())
+        	exit(0);
+        if (!input.empty())
+        	break ;
+    }
+	num = std::atoi(input.c_str());
+    return (num);
+}
+
+/*
+* Main adding logic.*/
 void	PhoneBook::add(void)
 {
 	std::string	prompt;
@@ -19,29 +66,19 @@ void	PhoneBook::add(void)
 	else
 		ix++;
 	
-	std::cout << "First Name: ";
-	std::cin >> prompt;
+	prompt = get_input("First Name: ");
 	contact[ix].set_first_name(prompt);
 
-	std::cout << "Last Name: ";
-	std::cin >> prompt;
+	prompt = get_input("Last Name: ");
 	contact[ix].set_last_name(prompt);
 
-	std::cout << "Nickname: ";
-	std::cin >> prompt;
+	prompt = get_input("Nickname: ");
 	contact[ix].set_nickname(prompt);
 
-	std::cout << "Phone Number: ";
-	std::cin >> num;
-/* 	while (!std::cin >> num)
-	{
-		std::cout << "Set a numberic value\nPhone Number: ";
-		std::cin.clear();
-	} */
+	num = get_input_num("Phone Number: ");
 	contact[ix].set_phone_number(num);
-
-	std::cout << "Darkest Secret: ";
-	std::cin >> prompt;
+	
+	prompt = get_input("Darkest Secret: ");
 	contact[ix].set_secret(prompt);
 }
 
