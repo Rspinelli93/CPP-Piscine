@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <iomanip>
 
 class	Contact
@@ -18,7 +19,9 @@ class	Contact
 		void set_nickname(std::string prompt);
 		void set_phone_number(int number);
 		void set_secret(std::string prompt);
-		void print_info(int i);
+		void print_arg(std::string arg);
+		void print_contact(void);
+		void print_contact_details(void);
 };
 
 #endif

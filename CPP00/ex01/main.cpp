@@ -8,7 +8,7 @@ int	main(void)
     my_pbook.set_ix();
 	while (1)
 	{
-		std::cout << "Enter command (ADD, SEARCH, EXIT):\n";
+		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
 		std::cin >> prompt;
 		if (std::cin.eof())
         	exit(0);

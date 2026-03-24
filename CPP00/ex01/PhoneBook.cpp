@@ -1,10 +1,27 @@
 #include "PhoneBook.hpp"
-
+#include <cstdio>
+/*
+* Helper to init the index of the PhoneBook.
+* I use "max" to help in the iteration of the search.*/
 void	PhoneBook::set_ix(void)
 {
-	eight = false;
+	max = false;
 	ix = -1;
 }
+
+/*
+* Helper to update the index of the PhoneBook.*/
+void	PhoneBook::update_ix(void)
+{
+	if (ix == 7)
+	{
+		ix = 0;
+		max = true;
+	}
+	else
+		ix++;
+}
+
 
 /*
 * Function to handle all string cases for user input.
@@ -58,14 +75,8 @@ void	PhoneBook::add(void)
 	std::string	prompt;
 	int			num = 0;
 
-	if (ix == 7)
-	{
-		ix = 0;
-		eight = true;
-	}
-	else
-		ix++;
-	
+	std::cout << std::endl;
+	update_ix();
 	prompt = get_input("First Name: ");
 	contact[ix].set_first_name(prompt);
 
@@ -80,26 +91,60 @@ void	PhoneBook::add(void)
 	
 	prompt = get_input("Darkest Secret: ");
 	contact[ix].set_secret(prompt);
+	std::cout << std::endl;
 }
 
+/*
+* Helper to print the header in the board of Contacts.*/
+void	PhoneBook::print_header(void)
+{
+	std::cout << std::setfill(' ');
+	std::cout << std::setw(10) << "Index" << "|";
+	std::cout << std::setw(10) << "First Name" << "|";
+	std::cout << std::setw(10) << "Last Name" << "|";
+	std::cout << std::setw(10) << "Nickname" << std::endl;
+}
+
+/*
+* Main Search logic.*/
 void	PhoneBook::search(void)
 {
-	int i = 0;
+	int 		i = 0;
+	int 		ix_input = 0;
+	std::string input;
 
 	if (ix == -1)
 		return ;
-	while ((i < 8 && eight == true) || (i <= ix && eight == false))
+	std::cout << std::endl;
+	print_header();
+	while ((i < MAX_CONTACTS && max == true) || (i <= ix && max == false))
 	{
-		contact[i].print_info(0);
-		std::cout << std::endl;
-		contact[i].print_info(1);
-		std::cout << std::endl;
-		contact[i].print_info(2);
-		std::cout << std::endl;
-		contact[i].print_info(3);
-		std::cout << std::endl;
-		contact[i].print_info(4);
+		std::cout << std::setfill (' ');
+		std::cout << std::setw (9) << i + 1 << "." << "|";
+		contact[i].print_contact();
 		std::cout << std::endl;
 		i++;
 	}
+	std::cout << std::endl;
+	std::cout << "Select an index: ";
+	std::cin >> input;
+	std::cout << std::endl;
+	ix_input = std::atoi(input.c_str());
+	if (ix_input < 1 || ix_input > 8)
+	{
+		std::cout << "Not a valid index!" << std::endl;
+		return ;
+	}
+	i = 0;
+	while ((i < MAX_CONTACTS && max == true) || (i <= ix && max == false))
+	{
+		if (i == ix_input - 1)
+		{
+			contact[i].print_contact_details();
+			return ;
+		}
+		i++;
+	}
+	std::cout << "Not a valid index!" << std::endl;
+	return ;
 }
