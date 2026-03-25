@@ -13,7 +13,7 @@ void	PhoneBook::set_ix(void)
 * Helper to update the index of the PhoneBook.*/
 void	PhoneBook::update_ix(void)
 {
-	if (ix == 7)
+	if (ix == MAX_CONTACTS - 1)
 	{
 		ix = 0;
 		max = true;
