@@ -8,15 +8,14 @@ SRC		= \
 		PhoneBook.cpp \
 		Contact.cpp
 OBJ		= $(SRC:.cpp=.o)
-H_CONT	= Contact.hpp
-H_PHONE	= PhoneBook.hpp 
+HEADERS = Contact.hpp PhoneBook.hpp 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(H_PHONE) $(H_CONT) $(OBJ) -o $@
+	$(CC) $(CFLAGS) $(OBJ) -o $@
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
