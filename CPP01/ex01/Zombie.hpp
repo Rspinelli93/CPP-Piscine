@@ -6,16 +6,15 @@
 
 class	Zombie
 {
-	std::string name;
+	private:
+		std::string _name;
 	public:
+		Zombie();
+		~Zombie();
 		void announce( void );
-		void set_name( std::string s_name );
-		void print_name( void );
+		void set_name( std::string new_name );
 };
 
-Zombie*	newZombie( std::string name );
-void	destructor( Zombie *zombie );
 Zombie* zombieHorde( int N, std::string name );
-void	print_err_alloc(void);
 
 #endif

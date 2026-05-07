@@ -1,22 +1,22 @@
 #include "Zombie.hpp"
 
-Zombie*	newZombie( std::string name )
+//+ std::bad_alloc — from <new>, thrown when new fails
+//+ .what() — from <exception>, returns error message as const char*
+
+//+ try — block that might throw an error
+//+ catch — block that handles the error if thrown
+Zombie	*newZombie( std::string name )
 {
 	Zombie	*newZom;
 
-	newZom = new (std::nothrow) Zombie;
-	if (!newZom)
+	try
 	{
-		std::cout << "Err: Alloc" << std::endl;
+		newZom = new Zombie(name);
+	}
+	catch (std::bad_alloc &err)
+	{
+		std::cout << "Err: " << err.what() << std::endl;
 		return (NULL);
 	}
-	newZom->set_name(name);
-	return ( newZom );
-}
-
-void	destructor( Zombie *zombie )
-{
-	zombie->print_name();
-	std::cout << " destroyed";
-	delete zombie;
+	return (newZom);
 }

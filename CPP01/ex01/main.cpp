@@ -4,31 +4,28 @@ int	main( void )
 {
 	int		N = 5;
 	int		i = 0;
-	Zombie	*Morty = zombieHorde(N, "Morty");
+	Zombie	*Horde = zombieHorde(N, "Morty");
 
-	if (Morty)
+	if (Horde)
 	{
 		while (i < N)
 		{
 			std::cout << "Index " << i << ": ";
-			Morty[i++].announce();
-			std::cout << std::endl;
+			Horde[i++].announce();
 		}
 		std::cout << "\nChanging names...\n" << std::endl;
-		Morty[1].set_name("Summer");
-		Morty[2].set_name("Rick");
-		Morty[3].set_name("Jerry");
-		Morty[4].set_name("Beth");
+		Horde[1].set_name("Summer");
+		Horde[2].set_name("Rick");
+		Horde[3].set_name("Jerry");
+		Horde[4].set_name("Beth");
 		i = 0;
 		while (i < N)
 		{
 			std::cout << "Index " << i << ": ";
-			Morty[i++].announce();
-			std::cout << std::endl;
+			Horde[i++].announce();
 		}
-		destructor(Morty);
-		std::cout << std::endl;
-		std::cout << std::endl;
+		std::cout << "\n\n";
 	}
+	delete[] Horde;
 	return ( 0 );
 }

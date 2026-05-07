@@ -5,7 +5,6 @@ CFLAGS	= -Werror -Wextra -g -Wall -std=c++98
 
 SRC		= \
 		main.cpp \
-		newZombie.cpp \
 		ZombieHorde.cpp \
 		Zombie.cpp
 OBJ		= $(SRC:.cpp=.o)

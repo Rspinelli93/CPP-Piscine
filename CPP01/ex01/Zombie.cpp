@@ -2,15 +2,17 @@
 
 void    Zombie::announce( void )
 {
-    std::cout << name << ": BraiiiiiiinnnzzzZ...";
+    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void    Zombie::set_name( std::string s_name )
+Zombie::Zombie( void ) { };
+
+Zombie::~Zombie( void )
 {
-    name = s_name;
+	std::cout << _name << " destroyed" << std::endl;
 }
 
-void    Zombie::print_name( void )
+void	Zombie::set_name( std::string new_name )
 {
-    std::cout << name;
+	_name = new_name;
 }

@@ -7,12 +7,8 @@ int	main( void )
 	if (Morty)
 	{
 		Morty->announce();
-		std::cout << std::endl;
-		destructor(Morty);
-		std::cout << std::endl;
+		delete(Morty);
 	}
 	randomChump("Rick");
-	std::cout << std::endl;
-
 	return ( 0 );
 }

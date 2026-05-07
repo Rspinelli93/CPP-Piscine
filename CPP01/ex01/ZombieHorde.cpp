@@ -1,17 +1,20 @@
 #include "Zombie.hpp"
 
-Zombie*	zombieHorde( int N, std::string name )
+Zombie* zombieHorde( int N, std::string name )
 {
-	Zombie	*Horde;
-	int		i = 0;
-	
-	Horde = new (std::nothrow) Zombie [N];
-	if (!Horde)
+	Zombie *horde;
+	int i = 0;
+
+	try
 	{
-		print_err_alloc();
-		return ( NULL );
+		horde = new Zombie[N];
+	}
+	catch (std::bad_alloc &err)
+	{
+		std::cout << "Err: " << err.what() << std::endl;
+		return (NULL);
 	}
 	while (i < N)
-		Horde[i++].set_name(name);
-	return ( Horde );
+		horde[i++].set_name(name);
+	return (horde);
 }
