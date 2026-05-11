@@ -2,7 +2,7 @@
 
 void	Weapon::setType( std::string value )
 {
-    type = value;
+    this->type = value;
 }
 
 const std::string&	Weapon::getType( void ) const
@@ -10,7 +10,7 @@ const std::string&	Weapon::getType( void ) const
 	return (this->type);
 }
 
-Weapon::Weapon( std::string name )
-{
-	setType(name);
-}
+Weapon::Weapon( std::string name ) : type(name) {}
+
+
+Weapon::~Weapon( void ) { }

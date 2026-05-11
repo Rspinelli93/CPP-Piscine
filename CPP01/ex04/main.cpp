@@ -6,6 +6,8 @@ int main(int ac, char *av[])
 {
 	if (ac == 4)
 	{
+		std::string s1 = av[2];
+		std::string s2 = av[3];
 		//+ Open the file
 		std::ifstream ogFile(av[1]);
 		if (!ogFile.is_open())
@@ -20,8 +22,6 @@ int main(int ac, char *av[])
 		fileName.append(".replace");
 		std::ofstream outputFile(fileName.c_str());
 		std::string buff;
-		std::string s1 = av[1];
-		std::string s2 = av[2];
 
 		//+ Populate the output file
 		while (getline (ogFile, buff))
@@ -32,6 +32,7 @@ int main(int ac, char *av[])
 			{
 				buff.erase(pos, s1.length());
 				buff.insert(pos, s2);
+				pos = buff.find(s1, pos + s2.length());
 			}
 			outputFile << buff << "\n";
 		}
@@ -45,23 +46,3 @@ int main(int ac, char *av[])
 	std::cout << "Usage: ./sed [word] [replacement]" << std::endl;
 	return (1);
 }
-
-//*NOTE: NOW GO INSIDE THE WHILE LOOP AND DO THIS:
-/* 
-ac == 4 check (filename, s1, s2)
-s1.empty() check
-
-ifstream ogFile(av[1])
-ofstream newFile(av[1] + ".replace")
-is_open() check both
-
-while getline(ogFile, line):
-    pos = line.find(s1)
-    while pos != string::npos:
-        line.erase(pos, s1.length())
-        line.insert(pos, s2)
-        pos = line.find(s1, pos + s2.length())
-    newFile << line << "\n"
-
-ogFile.close()
-newFile.close() */
