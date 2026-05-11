@@ -19,13 +19,21 @@ int main(int ac, char *av[])
 		fileName.assign(av[1]);
 		fileName.append(".replace");
 		std::ofstream outputFile(fileName.c_str());
-		std::string Buff;
+		std::string buff;
+		std::string s1 = av[1];
+		std::string s2 = av[2];
 
 		//+ Populate the output file
-		while (getline (ogFile, Buff))
+		while (getline (ogFile, buff))
 		{
-			outputFile << Buff;
-			outputFile << "\n";
+			size_t pos;
+			pos = buff.find(s1);
+			while (pos != std::string::npos)
+			{
+				buff.erase(pos, s1.length());
+				buff.insert(pos, s2);
+			}
+			outputFile << buff << "\n";
 		}
 
 		//+ Close the files and exit
