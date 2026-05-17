@@ -14,7 +14,7 @@ Fixed::Fixed( const Fixed &num )
 Fixed &Fixed::operator=(const Fixed &num)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &num)
+	if (this != &num) // Safe self-assignment check, Dangerous with dyn alloc mem
     	_fixed = num.getRawBits();
     return *this;
 }
