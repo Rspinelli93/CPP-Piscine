@@ -8,9 +8,9 @@
 class Cat : public Animal
 {
 	public:
-		Cat( std::string type );
+		Cat();
 		~Cat();
-		void makeSound();
+		virtual void makeSound( void ) const;
 };
 
 #endif

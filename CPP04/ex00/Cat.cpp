@@ -1,5 +1,7 @@
 #include "Cat.hpp"
 
-Cat::Cat( std::string type ) : { std::cout << "Cat constructor called" << std::endl; }
+Cat::Cat() : Animal("Cat") { std::cout << "Cat constructor called" << std::endl; }
 
-void Cat::makeSound( void ) { std::cout << "Meow!" << std::endl; }
+Cat::~Cat() { std::cout << "Cat destructor called" << std::endl; }
+
+void Cat::makeSound( void ) const { std::cout << "Meow!" << std::endl; }
