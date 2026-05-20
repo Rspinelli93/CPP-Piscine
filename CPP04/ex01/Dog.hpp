@@ -4,13 +4,18 @@
 #include <iostream>
 #include <string>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
+	private:
+		Brain* _brain;
 	public:
 		Dog();
 		~Dog();
+		Dog(const Dog &other);
 		void makeSound( void ) const;
+		Brain *getBrain( void );
 };
 
 #endif
