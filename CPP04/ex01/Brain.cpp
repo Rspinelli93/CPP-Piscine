@@ -9,7 +9,10 @@ Brain::Brain( Brain &other ) : _ideas(other._ideas) {	std::cout << "Brain copy c
 Brain &Brain::operator=( const Brain &other )
 {
 	if (this != &other)
-		*this = other;
+	{
+		for (int i = 0; i < 100; i++)
+			this->_ideas[i] = other._ideas[i];
+	}
 	return (*this);
 }
 

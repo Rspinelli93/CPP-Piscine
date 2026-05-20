@@ -20,7 +20,7 @@ int	main()
 			delete(array[i]);
 	}
 	{
-		std::cout << "\nCREATING Originals:\n---------------\n" << std::endl;
+		std::cout << "\n--------------------------------------\n\nCREATING Originals:\n---------------\n" << std::endl;
 		Dog *Doggy = new Dog();
 		Cat *Julio = new Cat();
 
@@ -28,8 +28,8 @@ int	main()
 		Julio->getBrain()->setIdea("I hate dogs", 0);
 
 		std::cout << "\nCREATING Copies:\n---------------\n" << std::endl;
-		Dog *CopyDog(Doggy);
-		Cat *CopyCat(Julio);
+		Dog *CopyDog = new Dog(*Doggy);
+		Cat *CopyCat = new Cat(*Julio);
 
 		CopyDog->getBrain()->setIdea("I love treats", 0);
 		CopyCat->getBrain()->setIdea("I love scratching the couch", 0);
@@ -41,5 +41,20 @@ int	main()
 		std::cout << "CopyCat: " << CopyCat->getBrain()->getIdea(0) << std::endl;
 
 		std::cout << "\nDESTRUCTORS:\n---------------\n" << std::endl;
+
+		delete(Doggy);
+		delete(Julio);
+		delete(CopyCat);
+		delete(CopyDog);
+	}
+	{
+		std::cout << "\nEVAL TEST:\n---------------\n" << std::endl;
+		Dog basic;
+		{
+			std::cout << "\nSecond scope:\n---------------\n" << std::endl;
+			Dog tmp = basic;
+			std::cout << "\ntmp destructor:\n---------------\n" << std::endl;
+		}
+		std::cout << "\nbasic destructor:\n---------------\n" << std::endl;
 	}
 }

@@ -12,7 +12,13 @@ Cat::~Cat()
 	std::cout << "Cat destructor called" << std::endl;
 }
 
-Cat::Cat( Cat &other ) : Animal(other) { std::cout << "Cat copy constructor called" << std::endl; }
+Cat::Cat( Cat &other ) : Animal(other)
+{
+	Brain *New = new Brain();
+	*New = *other.getBrain();
+	this->_brain = New;
+	std::cout << "Cat copy constructor called" << std::endl;
+}
 
 void Cat::makeSound( void ) const { std::cout << "Meow!" << std::endl; }
 

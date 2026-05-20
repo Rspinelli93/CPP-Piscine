@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+// We need a virtual destructor and make sound in order to also call the child ones
 class Animal
 {
 	protected:
