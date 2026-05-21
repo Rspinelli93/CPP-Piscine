@@ -2,20 +2,20 @@
 # define AMATERIA_HPP
 
 # include <iostream>
-# include "ICharacter.hpp"
+# include "Character.hpp"
 
 class AMateria
 {
 	protected:
 		std::string _type;
 	public:
-		AMateria( void );
-		virtual ~AMateria( void );
+		AMateria( void );								//Inherited
+		virtual ~AMateria( void );						//Inherited
 		AMateria( AMateria const &other );
 		AMateria &operator=( AMateria const &other );
 		AMateria(std::string const &type);
 	
-		std::string const &getType( void ) const; //Returns the materia type
+		std::string const &getType( void ) const;
 		virtual AMateria *clone( void ) const = 0;
 		virtual void use(ICharacter& target);
 };

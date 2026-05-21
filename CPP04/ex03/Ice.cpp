@@ -1,6 +1,6 @@
 #include "Ice.hpp"
 
-Ice::Ice( void ) : AMateria("ice"), _name("ice") { std::cout << "Ice: Constructor" << std::endl; }
+Ice::Ice( void ) : AMateria("ice") { std::cout << "Ice: Constructor" << std::endl; }
 
 Ice *Ice::clone( void ) const
 {
@@ -9,7 +9,4 @@ Ice *Ice::clone( void ) const
 	return (New);
 }
 
-std::string Ice::getName( void ) const { return ( this->_name ); }
-
-void Ice::setName( std::string const name ) { this->_name = name; }
-
+void Ice::use(ICharacter& target) { std::cout <<  "* shoots an ice bolt at " << target.getName() << " *" << std::endl; }
