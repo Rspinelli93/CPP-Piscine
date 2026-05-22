@@ -4,8 +4,11 @@
 # include <iostream>
 # include <exception>
 # include <string>
+# include "Form.hpp"
 
-/// @brief Bureaucrat function, contains a name and a grade as private atributes
+class Form;
+
+/// @brief Bureaucrat class, contains a name and a grade as private atributes
 class Bureaucrat
 {
 	private:
@@ -35,6 +38,8 @@ class Bureaucrat
 			public:
 				const char* what() const throw();
 		};
+
+		void signForm( Form &f );
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &mr);

@@ -5,7 +5,7 @@
 # include <exception>
 # include <string>
 
-/// @brief Bureaucrat function, contains a name and a grade as private atributes
+/// @brief Bureaucrat class, contains a name and a grade as private atributes
 class Bureaucrat
 {
 	private:

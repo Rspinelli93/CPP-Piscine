@@ -34,7 +34,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() { return ( "
 
 /// @brief Exception function for controlling the grade number to be in the range of 0 to 150
 /// @return A string with the error message
-const char* Bureaucrat::GradeTooLowException::what() const throw() { return ( "Grade too high" ); }
+const char* Bureaucrat::GradeTooLowException::what() const throw() { return ( "Grade too low" ); }
 
 /// @return Grade of a Bureaucrat
 int Bureaucrat::getGrade( void ) const { return ( this->_grade ); }

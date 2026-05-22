@@ -1,4 +1,7 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+//----------------- Orthodox declaration -------------
 
 Bureaucrat::Bureaucrat() : _name("*undefined_name*"), _grade(150) { std::cout << "Bureaucrat: Default constructor" << std::endl; }
 
@@ -28,13 +31,7 @@ Bureaucrat &Bureaucrat::operator=( Bureaucrat const &other )
 	return ( *this );
 }
 
-/// @brief Exception function for controlling the grade number to be in the range of 0 to 150
-/// @return A string with the error message
-const char* Bureaucrat::GradeTooHighException::what() const throw() { return ( "Grade too high" ); }
-
-/// @brief Exception function for controlling the grade number to be in the range of 0 to 150
-/// @return A string with the error message
-const char* Bureaucrat::GradeTooLowException::what() const throw() { return ( "Grade too high" ); }
+//-------------------- Getters + Overload << -------------
 
 /// @return Grade of a Bureaucrat
 int Bureaucrat::getGrade( void ) const { return ( this->_grade ); }
@@ -42,6 +39,21 @@ int Bureaucrat::getGrade( void ) const { return ( this->_grade ); }
 /// @return Name of a Bureaucrat
 std::string const &Bureaucrat::getName( void ) const { return ( this->_name ); }
 
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &mr)
+{
+	out << mr.getName() << ", bureaucrat grade " << mr.getGrade();
+	return out;
+}
+
+//-------------------- Change grades and Exceptions -------------
+
+/// @brief Exception function for controlling the grade number to be in the range of 0 to 150
+/// @return A string with the error message
+const char* Bureaucrat::GradeTooHighException::what() const throw() { return ( "Grade too high" ); }
+
+/// @brief Exception function for controlling the grade number to be in the range of 0 to 150
+/// @return A string with the error message
+const char* Bureaucrat::GradeTooLowException::what() const throw() { return ( "Grade too low" ); }
 
 /// @brief Increase by one the grade of a Bureaucrat
 void Bureaucrat::incrementGrade(void)
@@ -59,8 +71,21 @@ void Bureaucrat::decrementGrade(void)
     this->_grade++;
 }
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &mr)
+//-------------------- Sing form added -------------
+
+/// @brief Bureaucrat member function. It will try to sign a form
+/// @param f Form to sign
+/// @return void
+/// @throws Form::GradeTooLowException if grade is too low to sign
+void Bureaucrat::signForm( Form &f )
 {
-    out << mr.getName() << ", bureaucrat grade " << mr.getGrade();
-    return out;
+	try
+	{
+		f.beSigned(*this);
+		std::cout << this->getName() << " signed: " << f.getName() << " form\n" << std::endl;
+	}
+	catch(const std::exception& e)
+	{ 
+		std::cerr << this->getName() << " couldn't sign " << f.getName() << "\nbecause :" << e.what() << '\n';
+	}	
 }
