@@ -7,6 +7,9 @@
 #include <cstring>
 #include <limits.h>
 #include <climits> 
+#include <cfloat>
+#include <iomanip>
+#include <cerrno>
 
 enum nType
 {
@@ -19,11 +22,12 @@ enum nType
 };
 
 nType 	getType( std::string val );
-bool	isInvalid( std::string val );
-bool	isChar( std::string val );
-bool	isInt( std::string val );
-bool	isFloat( std::string val );
-bool	isDouble( std::string val );
-bool	isSpecial( std::string val );
+bool    hasDot( std::string str );
+bool    isChar( std::string val, char *end );
+bool	isInt( std::string val, double num, char *end );
+bool    isFloat( std::string val, char *end );
+bool    isDouble( std::string val, char *end );
+bool    isSpecial( std::string val );
+bool    isInvalid( std::string val );
 
 #endif

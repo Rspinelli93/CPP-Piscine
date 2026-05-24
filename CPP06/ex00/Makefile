@@ -6,7 +6,8 @@ FLAGS = -Wall -Werror -g -Wextra -std=c++98
 
 SRC = \
 	main.cpp \
-	ScalarConverter.cpp
+	ScalarConverter.cpp \
+	types.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

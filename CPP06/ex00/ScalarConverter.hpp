@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include "types.hpp"
 
 class ScalarConverter
 {
@@ -16,27 +17,13 @@ class ScalarConverter
 		static void convert( std::string val );
 };
 
-/*
-nan, nanf
-+inf, -inf
-+inff, -inff
+void	putChar( double num );
+void	putInt( double num );
+void	putDouble( double num, int decimal );
+void	putFloat( double num, int decimal );
+void	putValid( double num, std::string val );
+void	putSpecial( std::string val );
+void	putInvalid( std::string val );
+int		decimalLen( std::string val );
 
-Invalid cases:
-
-Empty string
-Multiple dots → 3.1.4
-Letters mixed in → 12abc
-Multiple signs → --3
-Sign with no digits → -
-Float without digits before/after dot → .f, 3.... (debatable)
-Overflow (too big for any type)
-
-Edge cases that ARE valid:
-
-0 → int
-0.0 → double
-0.0f → float
-' ' → char (space, displayable)
-'z' → char
-*/
 #endif
