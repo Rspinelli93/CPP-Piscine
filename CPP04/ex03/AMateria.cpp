@@ -8,11 +8,6 @@ AMateria::AMateria( AMateria const &other ) : _type(other._type) { std::cout << 
 
 AMateria::AMateria(std::string const &type) : _type(type) { std::cout << "AMateria: Param constructor" <<std::endl; }
 
-AMateria &AMateria::operator=( AMateria const &other )
-{
-	if (this != &other)
-		this->_type = other._type;
-	return ( *this );
-}
+AMateria &AMateria::operator=( AMateria const &other ) { (void)other; return ( *this ); }
 
 std::string const &AMateria::getType( void ) const { return (this->_type); }
