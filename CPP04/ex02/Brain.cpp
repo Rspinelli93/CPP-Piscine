@@ -4,7 +4,7 @@ Brain::Brain() { std::cout << "Brain default constructor called" <<std::endl; }
 
 Brain::~Brain() { std::cout << "Brain destructor called" <<std::endl; }
 
-Brain::Brain( Brain &other ) : _ideas(other._ideas) {	std::cout << "Brain copy constructor called" <<std::endl; }
+Brain::Brain( Brain &other ) { *this = other; std::cout; std::cout << "Brain copy constructor called" <<std::endl; }
 
 Brain &Brain::operator=( const Brain &other )
 {

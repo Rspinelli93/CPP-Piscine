@@ -4,13 +4,13 @@ int main(int ac, char **av )
 {
 	if (ac != 2)
 	{
-		std::cout << "Usage: ./Convert + [arg] --- or ./Convert + \"TEST ALL\" to run all tests." << std::endl;
+		std::cout << "Usage: " << "\033[32m" << "./Convert + [arg] --- or ./Convert + " << "\033[33m" << "\"TEST ALL\" " << "\033[32m" << "to run all tests." << "\033[0m" << std::endl;
 		return (1);
 	}
 	std::string	val = av[1];
 	if (val == "TEST ALL")
 	{
-		std::cout << "Simple valid tests:\n--------------" << std::endl;
+		std::cout << "\033[32m" << "Simple valid tests:\n--------------" << "\033[0m" << std::endl;
 		std::cout << "ARG: 0" << std::endl;
 		ScalarConverter::convert("0");
 		std::cout << "\n";
@@ -39,7 +39,7 @@ int main(int ac, char **av )
 		ScalarConverter::convert("-3.14f");
 		std::cout << "\n";
 
-		std::cout << "\n\nInvalid tests:\n--------------" << std::endl;
+		std::cout << "\033[32m" << "\n\nInvalid tests:\n--------------" << "\033[0m" << std::endl;
 		ScalarConverter::convert("0.0.7");
 		std::cout << "\n";
 		ScalarConverter::convert("65asd");
@@ -60,7 +60,7 @@ int main(int ac, char **av )
 		ScalarConverter::convert(".");
 		std::cout << "\n";
 
-		std::cout << "\n\nSpecial case tests:\n--------------" << std::endl;
+		std::cout << "\033[32m" << "\n\nSpecial case tests:\n--------------" << "\033[0m" << std::endl;
 		std::cout << "ARG: nan" << std::endl;
 		ScalarConverter::convert("nan");
 		std::cout << "\n";

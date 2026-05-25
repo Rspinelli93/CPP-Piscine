@@ -19,10 +19,10 @@ nType 	getType( std::string val )
 		return (FLOAT);
 	if (isDouble(val, end))
 		return (DOUBLE);
-	if (isInt(val, num, end))
-		return (INT);
 	if (isChar(val, end))
 		return (CHAR);
+	if (isInt(val, num, end))
+		return (INT);
 	return (INVALID);
 }
 
@@ -105,8 +105,11 @@ bool	isInvalid( std::string val )
 	if (num > FLT_MAX || num < -FLT_MAX)
 		return ( true );
 	// Other than f at the end or multiple dots case
-	if (end[0] != '\0' && strncmp(end, "f", 2))
-		return ( true );
+	if (val.length() != 1)
+	{
+		if (end[0] != '\0' && strncmp(end, "f", 2))
+			return ( true );
+	}
 	return ( false );
 }
 

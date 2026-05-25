@@ -21,7 +21,7 @@ $(NAME) : $(OBJ)
 	$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o *.replace
+	rm -f *.o
 fclean: clean
 	rm -f $(NAME)
 re: fclean all

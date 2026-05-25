@@ -3,7 +3,7 @@
 int main(void)
 {
 	{
-		std::cout << "Test 1: (Incrementing max grade)\n----------------------" << std::endl;
+		std::cout << "\033[32m" << "Test 1: (Incrementing max grade)\n----------------------" << "\033[0m" << std::endl;
 		Bureaucrat Miguel("Miguel", 1);
 		std::cout << Miguel << std::endl;
 
@@ -22,7 +22,7 @@ int main(void)
 		std::cout << Miguel << std::endl;
 	}
 	{
-		std::cout << "\n\nTest 2: (Decrementing min grade)\n----------------------" << std::endl;
+		std::cout << "\033[32m" << "\n\nTest 2: (Decrementing min grade)\n----------------------" << "\033[0m" << std::endl;
 		Bureaucrat Miguel("Miguel", 150);
 		std::cout << Miguel << std::endl;
 
@@ -41,10 +41,10 @@ int main(void)
 		std::cout << Miguel << std::endl;
 	}
 	{
-		std::cout << "\n\nTest 3: (Creating out of range)\n----------------------" << std::endl;
+		std::cout << "\033[32m" << "\n\nTest 3: (Creating out of range)\n----------------------" << "\033[0m" << std::endl;
 		try
 		{
-			Bureaucrat Juan("Juan", 350);
+			Bureaucrat Juan("Juan", 151);
 			std::cout << Juan << std::endl;
 		}
 		catch (std::exception &e) { std::cerr << e.what() << std::endl; }

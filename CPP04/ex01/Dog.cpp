@@ -12,6 +12,16 @@ Dog::~Dog()
 	std::cout << "Dog destructor called" << std::endl;
 }
 
+Dog &Dog::operator=(const Dog &other) 
+{
+	if (this != &other)
+	{
+		this->_type = other._type;
+		this->_brain = other._brain;
+	}
+	return ( *this );
+}
+
 void Dog::makeSound( void ) const { std::cout << "Woof!" << std::endl; }
 
 Dog::Dog( Dog &other) : Animal(other)

@@ -11,7 +11,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << "Test the 3 classes one by one.\nUsage: ./Bureaucrat + [num]\nValid tests values: 1, 2 or 3." << std::endl;
+		std::cout << "\033[32m" << "Test the 3 classes one by one.\n" << "\033[0m" << "Usage: ./Bureaucrat + [num]" << "\033[32m" << "\nValid tests values: 1, 2 or 3." << "\033[0m" << std::endl;
 		return (1);
 	}
 	std::string testNum = av[1];
@@ -23,7 +23,7 @@ int main(int ac, char **av)
 		runTest<PresidentialPardonForm>("President Morty", 6);
 	else
 	{
-		std::cout << "Not a valid Test number, use 1, 2 or 3" << std::endl;
+		std::cout << "\033[31m" << "Not a valid Test number, use 1, 2 or 3" << "\033[0m" << std::endl;
 		return (1);
 	}
 	return (0);
@@ -37,7 +37,7 @@ template <typename T>
 void runTest(std::string target, int bad_grade)
 {
     {
-        std::cout << "Test 1: All OK\n----------------------" << std::endl;
+        std::cout << "\033[32m" << "Test 1: All OK\n----------------------" << "\033[0m" << std::endl;
         Bureaucrat Juan("Juan", 2);
         T Form(target);
         std::cout << "\nSigning..." << std::endl;
@@ -51,7 +51,7 @@ void runTest(std::string target, int bad_grade)
         catch (std::exception &e) { std::cerr << e.what() << "\n" << std::endl; }
     }
     {
-        std::cout << "\n\nTest 2: Not signed\n----------------------" << std::endl;
+        std::cout << "\033[32m" << "\n\nTest 2: Not signed\n----------------------" << "\033[0m"  << std::endl;
         Bureaucrat Juan("Juan", 2);
         T Form(target);
         std::cout << "\nExecuting...\n" << std::endl;
@@ -62,7 +62,7 @@ void runTest(std::string target, int bad_grade)
         catch (std::exception &e) { std::cerr << e.what() << "\n" << std::endl; }
     }
     {
-        std::cout << "\n\nTest 3: Bad grade\n----------------------" << std::endl;
+        std::cout << "\033[32m" << "\n\nTest 3: Bad grade\n----------------------" << "\033[0m" << std::endl;
         Bureaucrat Juan("Juan", bad_grade);
         T Form(target);
         std::cout << "\nSigning..." << std::endl;

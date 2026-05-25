@@ -7,7 +7,7 @@
 
 int main( void )
 {
-	std::cout << "Test 1: Robotmy\n------------" << std::endl;
+	std::cout << "\033[32m" << "Test 1: Robotmy\n------------" << "\033[0m" << std::endl;
 	{
 		Intern Intern;
 		AForm *randomForm;
@@ -15,7 +15,7 @@ int main( void )
 		if (randomForm)
 			delete(randomForm);
 	}
-	std::cout << "\n\nTest 2: Shruberry\n------------" << std::endl;
+	std::cout << "\033[32m" << "\n\nTest 2: Shruberry\n------------" << "\033[0m" << std::endl;
 	{
 		Intern Intern;
 		AForm *randomForm;
@@ -23,7 +23,7 @@ int main( void )
 		if (randomForm)
 			delete(randomForm);
 	}
-	std::cout << "\n\nTest 3: Presidential\n------------" << std::endl;
+	std::cout << "\033[32m" << "\n\nTest 3: Presidential\n------------" << "\033[0m" << std::endl;
 	{
 		Intern Intern;
 		AForm *randomForm;
@@ -31,7 +31,7 @@ int main( void )
 		if (randomForm)
 			delete(randomForm);
 	}
-	std::cout << "\n\nTest 4: Wronf Form\n------------" << std::endl;
+	std::cout << "\033[32m" << "\n\nTest 4: Wrong Form\n------------" << "\033[0m" << std::endl;
 	{
 		Intern Intern;
 		AForm *randomForm;
