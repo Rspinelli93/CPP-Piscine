@@ -3,24 +3,22 @@
 /// @brief Function to get which kind of type the string represents
 /// @param val The string to check
 /// @return Enum myType value according to the type
-nType 	getType( std::string val )
+nType   getType( std::string val )
 {
+	char	*end;
+	double	num = strtod(val.c_str(), &end);
+
 	if (isSpecial(val))
 		return (SPECIAL);
 	if (isInvalid(val))
 		return (INVALID);
-
-	//strtod splits the first part into a number and second into a c_string.
-	char	*end;
-    double	num;
-	num = strtod(val.c_str(), &end);
+	if (val.length() == 1 && !std::isdigit(val[0]) && std::isprint(val[0]) && val[0] != '.')
+		return (CHAR);
 
 	if (isFloat(val, end))
 		return (FLOAT);
 	if (isDouble(val, end))
 		return (DOUBLE);
-	if (isChar(val, end))
-		return (CHAR);
 	if (isInt(val, num, end))
 		return (INT);
 	return (INVALID);

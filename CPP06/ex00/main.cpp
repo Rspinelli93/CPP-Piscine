@@ -39,6 +39,20 @@ int main(int ac, char **av )
 		ScalarConverter::convert("-3.14f");
 		std::cout << "\n";
 
+		std::cout << "\033[32m" << "Char tests:\n--------------" << "\033[0m" << std::endl;
+		std::cout << "ARG: p" << std::endl;
+		ScalarConverter::convert("p");
+		std::cout << "\n";
+		std::cout << "ARG: a" << std::endl;
+		ScalarConverter::convert("a");
+		std::cout << "\n";
+		std::cout << "ARG: Z" << std::endl;
+		ScalarConverter::convert("Z");
+		std::cout << "\n";
+		std::cout << "ARG: space ' '" << std::endl;
+		ScalarConverter::convert(" ");
+		std::cout << "\n";
+
 		std::cout << "\033[32m" << "\n\nInvalid tests:\n--------------" << "\033[0m" << std::endl;
 		ScalarConverter::convert("0.0.7");
 		std::cout << "\n";

@@ -12,31 +12,31 @@ ScalarConverter::~ScalarConverter() { std::cout << "ScalarConverter: Destructor"
 
 //------------ Conversion ---------------
 
-void	ScalarConverter::convert( std::string val )
+void    ScalarConverter::convert( std::string val )
 {
-	nType	type = getType(val);
+    nType   type = getType(val);
+    char    *end;
+    double  num = strtod(val.c_str(), &end);
 
-	char	*end;
-    double	num;
-	num = strtod(val.c_str(), &end);
-
-	switch (type)
-	{
-		case (INVALID):
-			putInvalid(val);
-			break;
-		case FLOAT:
-		case DOUBLE:
-		case INT:
-		case CHAR:
-			putValid(num, val);
-			break;
-		case (SPECIAL):
-			putSpecial(val);
-			break;
-		default:
-			break;
-	}
+    switch (type)
+    {
+        case (INVALID):
+            putInvalid(val);
+            break;
+        case CHAR:
+            putValidChar(val[0]);  // handle separately
+            break;
+        case FLOAT:
+        case DOUBLE:
+        case INT:
+            putValid(num, val);
+            break;
+        case (SPECIAL):
+            putSpecial(val);
+            break;
+        default:
+            break;
+    }
 }
 
 void	putChar( double num )
@@ -85,6 +85,14 @@ void	putValid( double num, std::string val )
 	putInt(num);
 	putFloat(num, decimal);
 	putDouble(num, decimal);
+}
+
+void    putValidChar( char c )
+{
+    std::cout << "Char: " << c << std::endl;
+    std::cout << "Int: " << static_cast<int>(c) << std::endl;
+    std::cout << "Float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
+    std::cout << "Double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
 
 void    putSpecial( std::string val )

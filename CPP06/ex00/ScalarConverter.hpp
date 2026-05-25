@@ -25,5 +25,6 @@ void	putValid( double num, std::string val );
 void	putSpecial( std::string val );
 void	putInvalid( std::string val );
 int		decimalLen( std::string val );
+void    putValidChar( char c );
 
 #endif
