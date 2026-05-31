@@ -6,8 +6,8 @@
 template <typename T> class Array
 {
 	private:
-	T				*_arr;
-	unsigned int	_size;
+		T				*_arr;
+		unsigned int	_size;
 	public:
 	Array();
 	Array( unsigned int n );
@@ -15,7 +15,9 @@ template <typename T> class Array
 	Array( Array const &other );
 	Array &operator=( Array const &other );
 	
-	T &operator[]( int index ) const;
+	T &operator[]( unsigned int index );
+	const T &operator[]( unsigned int index ) const;
+
 	int	size( void ) const;
 
 	class OutOfBounds : public std::exception

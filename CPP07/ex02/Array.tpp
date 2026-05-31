@@ -37,11 +37,21 @@ Array<T> &Array<T>::operator=( Array const &other )
 }
 
 template <typename T>
-T &Array<T>::operator[]( int index ) const 
+T &Array<T>::operator[]( unsigned int index ) 
 {
 	int s = this->_size;
 
-	if ( index < 0 || index >= s )
+	if ( index >= s )
+		throw Array<T>::OutOfBounds();
+	return (this->_arr[index]);
+}
+
+template <typename T>
+const T &Array<T>::operator[]( unsigned int index ) const
+{
+	int s = this->_size;
+
+	if ( index >= s )
 		throw Array<T>::OutOfBounds();
 	return (this->_arr[index]);
 }
