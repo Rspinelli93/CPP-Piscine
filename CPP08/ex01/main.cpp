@@ -4,7 +4,7 @@
 
 int main( void )
 {
-	std::cout << "Simple test: \n-------------" << std::endl;
+	std::cout << "\033[33mSimple test: \n-------------\033[0m" << std::endl;
 	
 	Span mySpan(5);
 	try
@@ -22,7 +22,7 @@ int main( void )
 		std::cerr << e.what() << '\n';
 	}
 	
-	std::cout << "\nTest overlow exception: \n-------------"<< std::endl;
+	std::cout << "\033[33m\nTest overlow exception: \n-------------\033[0m" << std::endl;
 	{
 		try
 		{
@@ -34,7 +34,7 @@ int main( void )
 		}
 	}
 
-	std::cout << "\nTest unpopulated exception: \n-------------"<< std::endl;
+	std::cout << "\033[33m\nTest unpopulated exception: \n-------------\033[0m" << std::endl;
 	Span mySpan2(5);
 	mySpan2.addNumber(64);
 	{
@@ -58,7 +58,7 @@ int main( void )
 		}
 	}
 
-	std::cout << "\nSubject Test: \n-------------"<< std::endl;
+	std::cout << "\033[33m\nSubject Test: \n-------------\033[0m" << std::endl;
 	{
 		Span sp = Span(5);
 		sp.addNumber(6);
@@ -69,26 +69,19 @@ int main( void )
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
-	std::cout << "\nTest 10.000: \n-------------"<< std::endl;
+	std::cout << "\033[33m\nTest 10.000: \n-------------\033[0m" << std::endl;
 	{
 		int SPANSIZE = 10000;
 		Span sp(SPANSIZE);
-
 		std::srand(std::time(NULL));
+
+		std::vector<int> v;
 		for (int i = 0; i < SPANSIZE; i++)
-		{
-			try
-			{
-				sp.addNumber(std::rand() % 1000000000);
-			}
-			catch(const std::exception& e)
-			{
-				std::cerr << e.what() << '\n';
-			}
-		}
+			v.push_back(std::rand() % 1000000000);
 
 		try
 		{
+			sp.addNumbers(v.begin(), v.end());
 			std::cout << sp.shortestSpan() << std::endl;
 			std::cout << sp.longestSpan() << std::endl;
 		}
@@ -96,6 +89,5 @@ int main( void )
 		{
 			std::cerr << e.what() << '\n';
 		}
-		
 	}
 }
