@@ -6,7 +6,7 @@
 #include <stack>
 
 //*Container is not an object inside the template, it's a type parameter with a default value. 
-//*In construction will a stack, and use its protected member c (that is a deque and gas the functions that I need for the iterator)
+//*In construction will inherit a stack, and use its protected member c (that is a deque and gas the functions that I need for the iterator)
 
 template <typename T, class container = std::deque<T> >
 class MutantStack : public std::stack<T>

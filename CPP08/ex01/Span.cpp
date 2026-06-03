@@ -47,8 +47,7 @@ int Span::longestSpan(void)
 {
     if (_nums.size() < 2)
         throw unpopulatedException();
-    return *std::max_element(_nums.begin(), _nums.end())
-         - *std::min_element(_nums.begin(), _nums.end());
+    return (*std::max_element(_nums.begin(), _nums.end()) - *std::min_element(_nums.begin(), _nums.end()));
 }
 
 //---------------- EXCEPTIONS ----------------

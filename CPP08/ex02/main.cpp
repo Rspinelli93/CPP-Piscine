@@ -4,7 +4,7 @@
 
 int main()
 {
-	std::cout << "\nTest with a MutantStack:\n---------" << std::endl;
+	std::cout << "\033[33m\nTest with a MutantStack:\n---------\033[0m" << std::endl;
 	{
 		MutantStack<int> mstack;
 		mstack.push(5);
@@ -26,7 +26,7 @@ int main()
 			++it;
 		}
 	}
-	std::cout << "\nTest with a list:\n---------" << std::endl;
+	std::cout << "\033[33m\nTest with a list:\n---------\033[0m" << std::endl;
 	{
 		std::list<int> myList;
 		myList.push_back(5);
@@ -48,7 +48,7 @@ int main()
 			++it;
 		}
 	}
-	std::cout << "\nTest with a vector:\n---------" << std::endl;
+	std::cout << "\033[33m\nTest with a vector:\n---------\033[0m" << std::endl;
 	{
 		std::vector<int> myVector;
 		myVector.push_back(5);
