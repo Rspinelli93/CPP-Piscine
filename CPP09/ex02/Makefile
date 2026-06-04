@@ -5,9 +5,7 @@ CPP = c++
 FLAGS = -Wall -Werror -g -Wextra -std=c++98
 
 SRC = \
-	main.cpp \
-	RPN.cpp \
-	test.cpp
+	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
