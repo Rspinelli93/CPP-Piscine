@@ -5,7 +5,10 @@ CPP = c++
 FLAGS = -Wall -Werror -g -Wextra -std=c++98
 
 SRC = \
-	main.cpp
+	main.cpp \
+	VectorMergeInsertion.cpp \
+	DequeMergeInsertion.cpp \
+	utils.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
